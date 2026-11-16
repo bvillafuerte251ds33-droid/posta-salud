@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Cita extends Model
+{
+    use HasFactory;
+
+    protected $fillable = [
+        'paciente_id',
+        'personal_medico_id',
+        'fecha_hora',
+        'fecha_hora_fin',
+        'motivo',
+        'estado',
+    ];
+
+    protected function casts(): array
+    {
+        return [
+            'fecha_hora' => 'datetime',
+            'fecha_hora_fin' => 'datetime',
+        ];
+    }
+
+    public function paciente()
+    {
+        return $this->belongsTo(Paciente::class);
+    }
+
+    public function personalMedico()
+    {
+        return $this->belongsTo(PersonalMedico::class);
+    }
+
+    public function atencion()
+    {
+        return $this->hasOne(Atencion::class);
+    }
+}
