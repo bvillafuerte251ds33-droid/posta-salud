@@ -70,3 +70,55 @@ Instituto de Educación Superior Público Túpac Amaru – Cusco
 Programa de Estudios: Desarrollo de Sistemas de Información
 
 Asignatura: DSI406 – Tecnología Backend
+## Base de datos
+
+El proyecto utiliza PostgreSQL como sistema gestor de base de datos.
+
+### Tablas principales
+
+- **users:** usuarios y roles del sistema.
+- **pacientes:** información de los pacientes.
+- **personal_medico:** datos del personal médico.
+- **citas:** programación y estado de las citas.
+- **atenciones:** diagnósticos y tratamientos registrados.
+
+### Modelos y relaciones
+
+Se implementaron modelos Eloquent para Paciente, PersonalMedico, Cita y Atencion, con sus respectivas relaciones entre tablas.
+
+### Factories y seeders
+
+Para generar datos de prueba se implementaron factories y seeders.
+
+Ejecutar:
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+**Importante:** este comando elimina las tablas y los datos existentes antes de volver a crearlos.
+
+Datos generados:
+
+- 3 usuarios con diferentes roles.
+- 6 registros de personal médico.
+- 40 pacientes.
+- 100 citas médicas.
+
+### Usuarios de prueba
+
+| Rol | Correo | Contraseña |
+|---|---|---|
+| Administrador | admin@posta.test | password |
+| Personal médico | medico@posta.test | password |
+| Recepción | recepcion@posta.test | password |
+
+Estas credenciales son únicamente para el entorno local de desarrollo.
+
+### Restricciones de base de datos verificadas
+
+- DNI de pacientes único.
+- Sexo del paciente limitado a M o F.
+- No se permite eliminar pacientes que tengan citas relacionadas.
+- Cada atención está relacionada con una cita.
+- Las restricciones de integridad impiden registrar valores no permitidos.
