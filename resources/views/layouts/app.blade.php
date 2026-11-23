@@ -401,7 +401,7 @@
 
         <nav class="nav">
             <a href="{{ route('inicio') }}" class="active">Inicio</a>
-            <a href="{{ route('inicio') }}#pacientes">Pacientes</a>
+            <a href="{{ route('pacientes.index') }}">Pacientes</a>
             <a href="{{ route('inicio') }}#personal">Personal médico</a>
             <a href="{{ route('inicio') }}#citas">Citas</a>
             <a href="{{ route('inicio') }}#atenciones">Atenciones</a>
